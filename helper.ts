@@ -6,7 +6,9 @@ export const getParentServiceReply = (service: Service) => {
 Berikut adalah layanan yang tersedia:
 ${service.children.map((child) => `${child.key}. ${child.title}`).join('\n')}
 
-Silakan pilih layanan dengan mengetikkan nomor yang sesuai. Ketik "layanan ${service.key}a" untuk layanan pertama, "layanan ${service.key}b" untuk layanan kedua, dan seterusnya.`;
+Silakan pilih layanan dengan mengetikkan nomor yang sesuai. Ketik "layanan ${service.key}a" untuk layanan pertama, "layanan ${service.key}b" untuk layanan kedua, dan seterusnya.
+
+Ketik "mulai" untuk memulai percakapan baru atau pilih layanan lain.`;
 }
 
 export const getChildServiceReply = (service: Service, childIndex: number) => {
@@ -18,5 +20,7 @@ export const getChildServiceReply = (service: Service, childIndex: number) => {
   return `Anda telah memilih layanan: ${service.title} - ${child.title}.
 
 Berikut adalah persyaratan yang diperlukan:
-${child.requirements.map(req => `- ${req}`).join('\n')}`;
+${child.requirements.map(req => `- ${req}`).join('\n')}
+
+Ketik "mulai" untuk memulai percakapan baru atau pilih layanan lain.`;
 }

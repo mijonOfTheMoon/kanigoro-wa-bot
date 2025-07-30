@@ -1,6 +1,6 @@
 import qrcode from 'qrcode-terminal';
 import { Client, LocalAuth } from 'whatsapp-web.js';
-import { FIRST_TRIGGER_MESSAGE, FIRST_TRIGGER_REPLY, KV } from './constants';
+import { ERROR_REPLY, FIRST_TRIGGER_MESSAGE, FIRST_TRIGGER_REPLY, KV } from './constants';
 
 const client = new Client({
   authStrategy: new LocalAuth()
@@ -20,19 +20,24 @@ client.on('call', call => {
 })
 
 client.on('message', message => {
+  const { id: { id }, from } = message
+  console.log(`[${id}][${from}] Received message: ${message.body} `);
   if (message.body === FIRST_TRIGGER_MESSAGE) {
+    console.log(`[${id}][${from}] Responding with first trigger reply.`);
     message.reply(FIRST_TRIGGER_REPLY);
     return;
   }
 
   const reply = KV[message.body];
   if (reply) {
+    console.log(`[${id}][${from}] Responding with reply: ${reply}`);
     message.reply(reply);
     return;
   }
 
   if (!reply) {
-    message.reply('Maaf, saya tidak mengerti perintah tersebut. Silakan coba lagi.');
+    console.log(`[${id}][${from}] Responding with error reply.`);
+    message.reply(ERROR_REPLY);
     return;
   }
 });
