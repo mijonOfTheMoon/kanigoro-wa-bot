@@ -175,7 +175,5 @@ dist
 .DS_Store
 
 # whatsapp-web.js
-# This file is used to ignore the build output of whatsapp-web.js
-# It is not necessary to include this in your project, but if you do,
-# you can uncomment the line below to ignore it.
 .wwebjs_cache/
+.wwebjs_auth/
