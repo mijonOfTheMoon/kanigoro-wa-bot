@@ -1,6 +1,6 @@
 import qrcode from 'qrcode-terminal';
 import { Client, LocalAuth } from 'whatsapp-web.js';
-import { FIRST_TRIGGER_MESSAGE, FIRST_TRIGGER_REPLY, KV } from './constants';
+import { ERROR_REPLY, FIRST_TRIGGER_MESSAGE, FIRST_TRIGGER_REPLY, KV } from './constants';
 
 const client = new Client({
   authStrategy: new LocalAuth()
@@ -32,7 +32,7 @@ client.on('message', message => {
   }
 
   if (!reply) {
-    message.reply('Maaf, saya tidak mengerti perintah tersebut. Ketik "mulai" untuk memulai percakapan baru atau pilih layanan yang tersedia.');
+    message.reply(ERROR_REPLY);
     return;
   }
 });

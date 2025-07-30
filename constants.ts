@@ -1,9 +1,7 @@
 import { SERVICES } from './data';
 import { getChildServiceReply, getParentServiceReply } from './helper';
 
-export const IS_PRODUCTION = true;
-
-export const FIRST_TRIGGER_MESSAGE = IS_PRODUCTION ? "Hai, aku ingin mengetahui layanan yang ada di Kelurahan. Bisakah kamu membantuku?" : "/start";
+export const FIRST_TRIGGER_MESSAGE = "Hai, aku ingin mengetahui layanan yang ada di Kelurahan. Bisakah kamu membantuku?"
 
 export const FIRST_TRIGGER_REPLY = `Selamat datang di layanan WhatsApp Kelurahan Kanigoro!.
 
@@ -11,6 +9,8 @@ Berikut adalah layanan yang tersedia:
 ${SERVICES.map(service => `${service.key}. ${service.title}`).join('\n')}
 
 Silakan pilih layanan dengan mengetikkan nomor yang sesuai. Ketik "layanan 1" untuk layanan pertama, "layanan 2" untuk layanan kedua, dan seterusnya. Ketik "mulai" untuk memulai percakapan baru.`;
+
+export const ERROR_REPLY = `Maaf, saya tidak mengerti perintah tersebut. Ketik "mulai" untuk memulai percakapan baru atau pilih layanan yang tersedia.`;
 
 export const KV: Record<string, string> = {
   mulai: FIRST_TRIGGER_REPLY,
