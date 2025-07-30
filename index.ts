@@ -32,7 +32,7 @@ client.on('message', message => {
   }
 
   if (!reply) {
-    message.reply('Maaf, saya tidak mengerti perintah tersebut. Silakan coba lagi.');
+    message.reply('Maaf, saya tidak mengerti perintah tersebut. Ketik "mulai" untuk memulai percakapan baru atau pilih layanan yang tersedia.');
     return;
   }
 });
