@@ -1,3 +1,9 @@
+process.chdir(__dirname);
+if (!process.env.npm_package_name) {
+    process.env.npm_package_name = 'bot-wa-kanigoro';
+    process.env.npm_package_version = '1.0.0';
+}
+
 import qrcode from 'qrcode-terminal';
 import { Client, LocalAuth } from 'whatsapp-web.js';
 import path from 'path';
