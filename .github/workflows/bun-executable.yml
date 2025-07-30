@@ -40,3 +40,4 @@ jobs:
           files: "BotWAKanigoro.exe"
           tag_name: latest
           make_latest: true
+          
