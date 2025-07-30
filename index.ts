@@ -20,18 +20,23 @@ client.on('call', call => {
 })
 
 client.on('message', message => {
+  const { id, from } = message
+  console.log(`[${id}][${from}] Received message: ${message.body} `);
   if (message.body === FIRST_TRIGGER_MESSAGE) {
+    console.log(`[${id}][${from}] Responding with first trigger reply.`);
     message.reply(FIRST_TRIGGER_REPLY);
     return;
   }
 
   const reply = KV[message.body];
   if (reply) {
+    console.log(`[${id}][${from}] Responding with reply: ${reply}`);
     message.reply(reply);
     return;
   }
 
   if (!reply) {
+    console.log(`[${id}][${from}] Responding with error reply.`);
     message.reply(ERROR_REPLY);
     return;
   }
