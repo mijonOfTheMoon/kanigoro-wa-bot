@@ -20,7 +20,7 @@ client.on('call', call => {
 })
 
 client.on('message', message => {
-  const { id, from } = message
+  const { id: { id }, from } = message
   console.log(`[${id}][${from}] Received message: ${message.body} `);
   if (message.body === FIRST_TRIGGER_MESSAGE) {
     console.log(`[${id}][${from}] Responding with first trigger reply.`);
