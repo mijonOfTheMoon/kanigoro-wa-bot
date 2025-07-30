@@ -1,9 +1,12 @@
 import qrcode from 'qrcode-terminal';
 import { Client, LocalAuth } from 'whatsapp-web.js';
+import path from 'path';
 import { ERROR_REPLY, FIRST_TRIGGER_MESSAGE, FIRST_TRIGGER_REPLY, KV } from './constants';
 
 const client = new Client({
-  authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth({
+        dataPath: path.join(process.cwd(), '.wwebjs_auth')
+    })
 });
 
 client.on('ready', () => {
