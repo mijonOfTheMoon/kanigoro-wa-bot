@@ -20,20 +20,23 @@ jobs:
         run: bun install
 
       - name: Start compiling executable
-        run: bun build --compile --target=bun-windows-x64 ./index.ts --outfile "Bot Whatsapp Kanigoro.exe"
+        run: bun build --compile --target=bun-windows-x64 ./index.ts --outfile "BotWAKanigoro.exe"
 
-    #   - name: Sign executable
-    #     uses: lando/code-sign-action@v3.0.0
-    #     with:
-    #       file: "Bot Whatsapp Kanigoro.exe"
-    #       certificate-id: ${{ secrets.WINDOZE_CERT_ID }}
-    #       certificate-data: ${{ secrets.WINDOZE_CERT_DATA }}
-    #       certificate-password: ${{ secrets.WINDOZE_CERT_PASSWORD }}
-
+      - name: Sign executable
+        uses: skymatic/code-sign-action@v1
+        with:
+          certificate: '${{ secrets.CERT_DATA }}'
+          password: '${{ secrets.CERT_PASSWORD }}'
+          certificatesha1: '${{ secrets.CERT_SHA }}'
+          description: 'Bot Whatsapp Kanigoro'
+          timestampUrl: 'http://timestamp.digicert.com'
+          folder: '.'
+          recursive: false
+          
       - name: Release executable
         uses: softprops/action-gh-release@v2.3.2
         with:
           name: Bot Whatsapp Kanigoro
-          files: "Bot Whatsapp Kanigoro.exe"
+          files: "BotWAKanigoro.exe"
           tag_name: latest
           make_latest: true
